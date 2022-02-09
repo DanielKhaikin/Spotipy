@@ -35,9 +35,11 @@ class Artist:
 
                 return album
 
-    def delete_album(self, album):
-
-        self.albums.remove(album)
-        print(f'Removed album {album.get_album_name()}')
+    def delete_album(self, album_id):
+        for album in self.albums:
+            if album.get_album_id() == album_id:
+                self.albums.remove(album)
+                print(f'Removed album {album.get_album_name()}')
+                break
 
 
