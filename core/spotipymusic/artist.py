@@ -22,7 +22,6 @@ class Artist:
 
     def add_album(self, new_album: Album):
         self.albums.append(new_album.get_album_id())
-        print(f"Added album {new_album.get_album_name()} to artist {self.name}")
 
     def album_exists(self, album_id):
         albums_id = [album.get_album_id() for album in self.albums]
@@ -39,7 +38,6 @@ class Artist:
         for album in self.albums:
             if album.get_album_id() == album_id:
                 self.albums.remove(album)
-                print(f'Removed album {album.get_album_name()}')
                 break
 
 

@@ -8,14 +8,13 @@ from core.spotipymusic.song import Song
 
 def load_songs():
     artists = Artists([])
-    songs_dir = os.listdir(r'/helpers/documents/songs')
-    count = 0
+    #need to put location in configuration file
+    songs_dir = os.listdir(r'C:\Users\Daniel\PycharmProjects\Spotipy\helpers\documents\songs')
     for file in songs_dir:
         try:
             track_file = open(fr'C:\Users\Daniel\PycharmProjects\Spotipy\helpers\documents\songs\{file}', "r")
             track = json.load(track_file)
             song = Song(track['track']['id'], track['track']['name'], track['track']['popularity'])
-            print(song)
             for artist in track['track']['artists']:
                 if artists.artist_exists(artist['id']):
 
@@ -37,21 +36,10 @@ def load_songs():
                     album = Album(track['track']['album']['id'], track['track']['album']['name'], [song])
                     new_artist = Artist(artist['id'], artist['name'], [album])
                     artists.add_artist(new_artist)
-            print(song.get_song_name())
-
-        except Exception as e:
-            raise e
-
         finally:
-            count += 1
-            print(count)
+            continue
+
     return artists
-
-
-
-
-
-
 
 
 

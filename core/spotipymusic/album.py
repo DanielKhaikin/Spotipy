@@ -23,7 +23,6 @@ class Album:
     def add_song(self, new_song: Song):
 
         self.songs.append(new_song)
-        print(f'Added song {new_song.get_song_name()}')
 
     def song_exists(self, song_id):
         songs_id = [song.get_song_id() for song in self.songs]
