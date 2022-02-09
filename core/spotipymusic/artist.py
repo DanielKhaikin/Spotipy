@@ -26,4 +26,4 @@ class Artist:
 
     def album_exists(self, album: Album):
 
-        return album in self.albums
+        return album.get_album_id() in self.albums

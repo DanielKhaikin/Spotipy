@@ -26,5 +26,5 @@ class Album:
 
     def song_exists(self, song: Song):
 
-        return song in self.songs
+        return song.get_song_id() in self.songs
 
