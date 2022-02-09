@@ -5,7 +5,7 @@ import uuid
 
 class Playlist:
     def __init__(self, name, songs: List[Song]):
-        self.id = uuid.uuid4()
+        self.playlist_id = uuid.uuid4()
         self.name = name
         self.songs = songs
 
@@ -15,7 +15,7 @@ class Playlist:
 
     def get_playlist_id(self):
 
-        return self.id
+        return self.playlist_id
 
     def get_playlist_songs(self):
 
@@ -28,4 +28,3 @@ class Playlist:
     def change_name(self, name):
 
         self.name = name
-    

@@ -39,7 +39,7 @@ def get_songs_from_album(album_id):
 def get_all_songs(artist_id):
     songs = []
     for artist in get_all_artists():
-        if artist.get_artist_id() == artist_id:
+        if artist.get_user_id() == artist_id:
             for album in artist.get_albums():
                 [songs.append(song) for song in album.get_songs()]
 
