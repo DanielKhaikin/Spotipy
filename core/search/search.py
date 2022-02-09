@@ -36,6 +36,23 @@ def get_songs_from_album(album_id):
             [print(song.get_song_name()) for song in album.get_songs()]
 
 
-get_songs_from_album("1Y1kv5n86UzcV3dBkkAsSq")
-get_artist_albums_names("7Ln80lUS6He07XvHI8qqHH")
+def get_all_songs(artist_id):
+    songs = []
+    for artist in get_all_artists():
+        if artist.get_artist_id() == artist_id:
+            for album in artist.get_albums():
+                [songs.append(song) for song in album.get_songs()]
+
+            return songs
+
+
+def get_top_songs(artist_id):
+    songs = get_all_songs(artist_id)
+    songs.sort(key=lambda song: song.popularity, reverse=True)
+    for song in songs:
+        print(song.get_song_name(), song.get_song_popularity())
+
+
+#get_songs_from_album("1Y1kv5n86UzcV3dBkkAsSq")
+get_top_songs("7Ln80lUS6He07XvHI8qqHH")
 
