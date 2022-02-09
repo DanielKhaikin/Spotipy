@@ -21,7 +21,7 @@ class Artist:
         return self.albums
 
     def add_album(self, new_album: Album):
-        self.albums.append(new_album.get_album_id())
+        self.albums.append(new_album)
 
     def album_exists(self, album_id):
         albums_id = [album.get_album_id() for album in self.albums]

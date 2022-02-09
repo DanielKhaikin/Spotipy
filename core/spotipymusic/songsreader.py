@@ -36,8 +36,9 @@ def load_songs():
                     album = Album(track['track']['album']['id'], track['track']['album']['name'], [song])
                     new_artist = Artist(artist['id'], artist['name'], [album])
                     artists.add_artist(new_artist)
-        finally:
-            continue
+        except Exception as ex:
+            print(ex)
+
 
     return artists
 
