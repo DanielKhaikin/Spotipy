@@ -1,4 +1,4 @@
-from core.song import Song
+from core.spotipymusic.song import Song
 from typing import List
 
 
