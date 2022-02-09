@@ -21,9 +21,23 @@ class Artist:
         return self.albums
 
     def add_album(self, new_album: Album):
-        self.albums.append(new_album)
+        self.albums.append(new_album.get_album_id())
         print(f"Added album {new_album.get_album_name()} to artist {self.name}")
 
-    def album_exists(self, album: Album):
+    def album_exists(self, album_id):
+        albums_id = [album.get_album_id() for album in self.albums]
 
-        return album.get_album_id() in self.albums
+        return album_id in albums_id
+
+    def get_album(self, album_id):
+        for album in self.albums:
+            if album.get_album_id() == album_id:
+
+                return album
+
+    def delete_album(self, album):
+
+        self.albums.remove(album)
+        print(f'Removed album {album.get_album_name()}')
+
+

@@ -24,7 +24,15 @@ class Album:
 
         self.songs.append(new_song)
 
-    def song_exists(self, song: Song):
+    def song_exists(self, song_id):
+        songs_id = [song.get_song_id() for song in self.songs]
 
-        return song.get_song_id() in self.songs
+        return song_id() in songs_id
+
+    def get_song(self, song_id):
+        for song in self.songs:
+            if song.get_song_id() == song_id:
+
+                return song
+
 
