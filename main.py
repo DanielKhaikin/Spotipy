@@ -4,4 +4,4 @@ from core.spotipymusic import get_artists
 
 
 user = create_user('Daniel')
-search(get_artists_names, user.get_is_premium())
+search(search_func=get_top_songs("71NBOcJ9lMeXqnbnya1z0x"), is_premium=user.get_is_premium())
