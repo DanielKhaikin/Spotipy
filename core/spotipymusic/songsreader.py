@@ -19,7 +19,7 @@ def load_songs():
                 if artists.artist_exists(artist['id']):
 
                     exist_artist = artists.get_artist(artist['id'])
-                    artists.delete_artist(exist_artist.get_artist_id())
+                    artists.delete_artist(exist_artist.get_user_id())
                     if exist_artist.album_exists(track['track']['album']['id']):
                         album = exist_artist.get_album(track['track']['album']['id'])
                         exist_artist.delete_album(album.get_album_id())
@@ -39,8 +39,4 @@ def load_songs():
         except Exception as ex:
             print(ex)
 
-
     return artists
-
-
-

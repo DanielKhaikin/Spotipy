@@ -1,4 +1,5 @@
 from core.spotipymusic.artist import Artist
+from core.users.user import User
 from typing import List
 
 
@@ -15,16 +16,16 @@ class Artists:
 
     def delete_artist(self, artist_id):
         for artist in self.artists:
-            if artist.get_artist_id() == artist_id:
+            if artist.get_user_id() == artist_id:
                 self.artists.remove(artist)
 
     def artist_exists(self, artist_id):
-        artists_id = [artist.get_artist_id() for artist in self.artists]
+        artists_id = [artist.get_user_id() for artist in self.artists]
 
         return artist_id in artists_id
 
     def get_artist(self, artist_id):
         for artist in self.artists:
-            if artist.get_artist_id() == artist_id:
+            if artist.get_user_id() == artist_id:
 
                 return artist

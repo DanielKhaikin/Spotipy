@@ -1,20 +1,12 @@
 from core.spotipymusic.album import Album
 from typing import List
+from core.users.user import User
 
 
-class Artist:
+class Artist(User):
     def __init__(self, artist_id, name, albums: List[Album]):
-        self.artist_id = artist_id
-        self.name = name
+        User.__init__(self, name, [], artist_id, True)
         self.albums = albums
-
-    def get_artist_id(self):
-
-        return self.artist_id
-
-    def get_artist_name(self):
-
-        return self.name
 
     def get_albums(self):
 
