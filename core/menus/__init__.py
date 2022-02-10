@@ -1,5 +1,6 @@
 from core.users import create_user
 from core.users import users_file_reader
+from helpers.exceptions import NotAnOptionException, UsernameDoesNotExistsException
 
 
 def login_menu():
@@ -12,7 +13,7 @@ def login_menu():
     elif ans == 2:
         sign_up()
     else:
-        # create exeption
+        raise NotAnOptionException
 
 
 def sign_up():
@@ -25,12 +26,14 @@ def sign_up():
     else:
         user = create_user(username)
 
+    print("sign in completed successfully")
+
 
 def login():
     username = input("enter username")
     usernames = [user["username"] for user in users_file_reader()]
     print("-----------------------------")
     if username in usernames:
-
+        print("login completed successfully")
     else:
-        # create exception
+        raise UsernameDoesNotExistsException
