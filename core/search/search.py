@@ -9,12 +9,12 @@ def get_all_artists():
 
 def get_artists_names():
 
-    return [artist.get_artist_name()for artist in get_all_artists()]
+    return [artist.get_user_username() for artist in get_all_artists()]
 
 
 def get_artist_albums_names(artist_id):
     for artist in get_all_artists():
-        if artist.get_artist_id() == artist_id:
+        if artist.get_user_id() == artist_id:
 
             return [album.get_album_name() for album in artist.get_albums()]
 
