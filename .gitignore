@@ -129,6 +129,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-#helpers
-helpers
+
+#addition documents
+helpers/documents
 

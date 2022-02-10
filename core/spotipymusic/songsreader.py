@@ -4,15 +4,16 @@ from core.spotipymusic.album import Album
 from core.spotipymusic.artist import Artist
 from core.spotipymusic.artists import Artists
 from core.spotipymusic.song import Song
+from helpers.conventionsfilereader import get_songs_location
 
 
 def load_songs():
     artists = Artists([])
-    #need to put location in configuration file
-    songs_dir = os.listdir(r'C:\Users\Daniel\PycharmProjects\Spotipy\helpers\documents\songs')
+    songs_location = get_songs_location()
+    songs_dir = os.listdir(songs_location)
     for file in songs_dir:
         try:
-            track_file = open(fr'C:\Users\Daniel\PycharmProjects\Spotipy\helpers\documents\songs\{file}', "r")
+            track_file = open(f'{songs_location}\\{file}', "r")
             track = json.load(track_file)
             song = Song(track['track']['id'], track['track']['name'], track['track']['popularity'])
             for artist in track['track']['artists']:
