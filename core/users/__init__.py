@@ -1,6 +1,18 @@
+from core.users.usersfile import users_file_reader
+
+
 def create_user(username, is_premium=False):
     from core.users.user import User
+    from core.users.usersfile import insert_to_users_file, users_file_reader
+    users_names = [user['username'] for user in users_file_reader()]
+    if username in users_names:
+
+        # create my own exception
+        return "Name is taken"
+
     user = User(username=username, playlists=[], is_premium=is_premium)
+    insert_to_users_file(user)
+
     return user
 
 

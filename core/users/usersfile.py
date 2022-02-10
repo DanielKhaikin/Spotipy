@@ -1,7 +1,6 @@
 import json
 from core.users.user import User
 from helpers.conventionsfilereader import get_users_location
-from core.users import create_user
 
 
 def users_file_reader():
