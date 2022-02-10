@@ -4,7 +4,7 @@ import uuid
 
 
 class User:
-    def __init__(self, username, playlists: List[Playlist], user_id=uuid.uuid4(), is_premium=False):
+    def __init__(self, username, playlists: List[Playlist], user_id=str(uuid.uuid4()), is_premium=False):
         self.user_id = user_id
         self.username = username
         self.is_premium = is_premium
@@ -36,7 +36,7 @@ class User:
         return False
 
     def add_playlist(self, playlist_name):
-        if len(self.playlists) is 5 and self.is_premium is False:
+        if len(self.playlists) == 5 and self.is_premium is False:
             print("You can't create this playlist, if you want upgrade to premium")
         else:
             self.playlists.append(Playlist(playlist_name, []))
