@@ -4,12 +4,22 @@ from helpers.conventionsfilereader import get_users_location
 from core.users import create_user
 
 
+def users_file_reader():
+    file_location = get_users_location()
+    try:
+        with open(file_location, 'r') as users_file:
+            users = json.load(users_file)
+
+        return users
+
+    except Exception as e:
+
+        return []
+
+
 def insert_to_users_file(user: User):
     file_location = get_users_location()
-    with open(file_location, 'r') as users_file:
-        users = json.load(users_file)
-
-    print()
+    users = users_file_reader()
     users.append({
         "id": user.get_user_id(),
         "username": user.get_user_username(),
@@ -20,5 +30,3 @@ def insert_to_users_file(user: User):
 
 
 
-
-insert_to_users_file(user=create_user("Akiva", True))

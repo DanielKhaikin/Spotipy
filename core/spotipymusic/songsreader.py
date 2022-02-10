@@ -5,10 +5,12 @@ from core.spotipymusic.artist import Artist
 from core.spotipymusic.artists import Artists
 from core.spotipymusic.song import Song
 from helpers.conventionsfilereader import get_songs_location
+from core.users.usersfile import insert_to_users_file, users_file_reader
 
 
 def load_songs():
     artists = Artists([])
+    users_id = [user['id'] for user in users_file_reader()]
     songs_location = get_songs_location()
     songs_dir = os.listdir(songs_location)
     for file in songs_dir:
@@ -36,6 +38,8 @@ def load_songs():
                 else:
                     album = Album(track['track']['album']['id'], track['track']['album']['name'], [song])
                     new_artist = Artist(artist['id'], artist['name'], [album])
+                    if new_artist.get_user_id() not in users_id:
+                        insert_to_users_file(new_artist)
                     artists.add_artist(new_artist)
         except Exception as ex:
             print(ex)

@@ -36,7 +36,7 @@ class User:
         return False
 
     def add_playlist(self, playlist_name):
-        if len(self.playlists) == 5 and self.is_premium is False:
+        if len(self.playlists) == 5 and self.is_premium == False:
             print("You can't create this playlist, if you want upgrade to premium")
         else:
             self.playlists.append(Playlist(playlist_name, []))
@@ -44,7 +44,7 @@ class User:
     def add_song_to_playlist(self, playlist_name, song):
         for playlist in self.playlists:
             if playlist.get_playlist_name() == playlist_name:
-                if (len(playlist.get_playlist_songs() is 20)) and self.is_premium is False:
+                if (len(playlist.get_playlist_songs() == 20)) and self.is_premium == False:
                     print("You can't add this song to the playlist, if you want upgrade to premium")
                     break
                 else:
